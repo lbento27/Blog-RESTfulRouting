@@ -12,10 +12,20 @@ app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 //mongoose/Schema/model config
-mongoose.connect("mongodb://localhost:27017/restful_blog_app", {
+// mongoose.connect("mongodb://localhost:27017/restful_blog_app", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false
+// });
+
+//*instead of setting up env every time we close VSCODE make a backup like
+var urlDB = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+
+mongoose.connect(urlDB, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true
 });
+
 var blogSchema = new mongoose.Schema({
   title: String,
   image: String,
@@ -118,6 +128,13 @@ app.delete("/blogs/:id", function(req, res) {
   });
 });
 
-app.listen(3000, function() {
-  console.log("Server is running!");
+// app.listen(3000, function() {
+//   console.log("Server is running!");
+// });
+//*instead of setting up env every time we close VSCODE make a backup like
+var port = process.env.PORT || 3000;
+//var ip = process.env.IP || "localhost";//<-DO NOT USE- by default VSCode set to localhost and heroku doesn't need it to(will crash on heroku if activated)
+
+app.listen(port, function() {
+  console.log("YelpCamp server has started!!");
 });
