@@ -136,5 +136,5 @@ var port = process.env.PORT || 3000;
 //var ip = process.env.IP || "localhost";//<-DO NOT USE- by default VSCode set to localhost and heroku doesn't need it to(will crash on heroku if activated)
 
 app.listen(port, function() {
-  console.log("YelpCamp server has started!!");
+  console.log("BlogDog server has started!!");
 });
