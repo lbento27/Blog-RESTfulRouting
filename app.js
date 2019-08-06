@@ -18,7 +18,8 @@ app.use(methodOverride("_method"));
 // });
 
 //*instead of setting up env every time we close VSCODE make a backup like
-var urlDB = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+var urlDB =
+  process.env.DATABASEURL || "mongodb://localhost:27017/restful_blog_app";
 
 mongoose.connect(urlDB, {
   useNewUrlParser: true,
